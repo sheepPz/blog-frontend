@@ -44,6 +44,7 @@ const config = {
     ]
   },
   plugins: [
+    // 清除老的打包文件
     new CleanWebpackPlugin(),
     // 请确保引入这个插件！
     new VueLoaderPlugin(),
@@ -72,15 +73,23 @@ if(isDev) {
   config.module.rules.push({
     //css预处理器，使用模块化的方式写css代码
     //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
-    test: /\.styl/,
+    test: /\.less$/,
     use: [
-      'vue-style-loader',
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          // you can specify a publicPath here
+          // by default it uses publicPath in webpackOptions.output
+          publicPath: './',
+          hmr: true,
+        },
+      },
       'css-loader',
       { 
         loader: 'postcss-loader', 
         options: { sourceMap: true } 
       },
-      'stylus-loader'
+      'less-loader'
     ]  
   });
   config.devServer = {
@@ -95,7 +104,7 @@ if(isDev) {
     //css预处理器，使用模块化的方式写css代码
       //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
       {
-        test: /\.styl/,
+        test: /\.less$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -103,7 +112,7 @@ if(isDev) {
               // you can specify a publicPath here
               // by default it uses publicPath in webpackOptions.output
               publicPath: './',
-              hmr: process.env.NODE_ENV === 'development',
+              hmr: false,
             },
           },
           'css-loader',
@@ -111,7 +120,7 @@ if(isDev) {
             loader: 'postcss-loader', 
             options: { sourceMap: true } 
           },
-          'stylus-loader'
+          'less-loader'
         ]
       },
   );
