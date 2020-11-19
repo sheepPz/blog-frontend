@@ -1,23 +1,26 @@
 <template>
     <section class="real-app">
+        <template>
         <input
-                type="text"
-                class="add-input"
-                autofocus="autofocus"
-                placeholder="接下来做什么"
-                @keyup.enter="addTodo"
+            type="text"
+            class="add-input"
+            autofocus="autofocus"
+            :placeholder="todoMsg"
+            @keyup.enter="addTodo"
+            :disabled="todos.length >= 10"
         >
+        </template>
         <Item
-                v-for="todo in filterTodos"
-                :todo="todo"
-                :key="todo.id"
-                @del="deleteTodo"
+            v-for="todo in filterTodos"
+            :todo="todo"
+            :key="todo.id"
+            @del="deleteTodo"
         />
         <Tabs
-                :filter="filter"
-                :todos="todos"
-                @toggle="toggleFilter"
-                @clearAll="clearAllCompletedTodo"
+            :filter="filter"
+            :todos="todos"
+            @toggle="toggleFilter"
+            @clearAll="clearAllCompletedTodo"
         />
     </section>
 </template>
@@ -47,6 +50,19 @@
                 }
                 const filterCompleted = this.filter === 'completed';
                 return this.todos.filter(todo => todo.completed === filterCompleted);
+            },
+            todoMsg() {
+                let msg = '接下来做什么';
+               if (this.todos.length >= 10) {
+                    msg = '要做的事情已经很多了,解决完一些再做安排吧';
+               } else if(this.todos.length >= 8) {
+                    msg = '要做的事好多啊,接下来要..';
+               } else if (this.todos.length >= 6) {
+                    msg = '唔.. 还有安排吗';
+               } else if (this.todos.length >= 3) {
+                    msg = '还有什么要做呢';
+               }
+               return msg;
             }
         },
         methods: {
@@ -98,6 +114,7 @@
         padding: 16px 16px 16px 36px;
         border: none;
         box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+        background-color: #ffffff;
     }
 </style>
 

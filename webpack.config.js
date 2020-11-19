@@ -66,6 +66,11 @@ const config = {
         return chunk.name !== 'my-excluded-chunk';
       }
     }
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    }
   }
 }
 
@@ -73,7 +78,7 @@ if(isDev) {
   config.module.rules.push({
     //css预处理器，使用模块化的方式写css代码
     //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
-    test: /\.less$/,
+    test: /(\.less|\.css)$/,
     use: [
       {
         loader: MiniCssExtractPlugin.loader,
@@ -104,7 +109,7 @@ if(isDev) {
     //css预处理器，使用模块化的方式写css代码
       //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
       {
-        test: /\.less$/,
+        test: /(\.less|\.css)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

@@ -30,10 +30,9 @@
     "less-loader": "^7.1.0",
     "postcss": "^7.0.17",
     "postcss-loader": "^3.0.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
     "url-loader": "^2.0.1",
     "vue": "^2.6.10",
+    "vue-fullpage.js": "^0.1.6",
     "vue-loader": "^15.7.0",
     "vue-router": "^3.4.9",
     "vue-template-compiler": "^2.6.10"

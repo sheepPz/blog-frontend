@@ -6,20 +6,17 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
   #app {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
   }
   #main {
     position: relative;
@@ -44,4 +41,15 @@ export default {
     opacity: 0.2;
     z-index: -1;
   }
+  .font {
+    color: red;
+    font-size: 30px;
+  }
+.page-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
