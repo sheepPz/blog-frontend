@@ -16,7 +16,7 @@
       </div>
       <div class="section" id="nothing-section">
         <div class="main">
-          <img :src="snow" class="bg"/>
+          <img :src="dance" class="bg"/>
           <div class="box">
             Second section ...
           </div>
@@ -31,6 +31,7 @@ import Header from './header.vue'
 import Footer from './footer.jsx'
 import Todo from './todo.vue'
 import snow from '@/assets/images/snow.jpg'
+import dance from '@/assets/images/dance.jpg'
 
 export default {
   components: {
@@ -43,7 +44,8 @@ export default {
       opts: {
         verticalCentered: true,
       },
-      snow
+      snow,
+      dance,
     }
   }
 }
@@ -69,7 +71,7 @@ export default {
       position: absolute;
     }
     .bg {
-      filter: blur(2px);
+      // filter: blur(2px);
       height: 100%;
       width: 100%;
     }

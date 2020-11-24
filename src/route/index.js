@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router'
 import todo from '../todo/index.vue' 
+import blog from '../blog/index.vue' 
 
 Vue.use(Router);
 
@@ -11,7 +12,7 @@ const routes = [
     },
     {
         path: '/blog',
-        component: todo,
+        component: blog,
         name: 'index',
     },
 ]

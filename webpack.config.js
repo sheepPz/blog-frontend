@@ -9,6 +9,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
+  mode: process.env.NODE_ENV,
   //入口， __dirname 是当前文件所在目录
   entry: path.join(__dirname, 'src/index.js'),
   //输出
