@@ -5,7 +5,7 @@ import { getBloglist } from '@/service/blog'
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
-        userInfo: null,
+        userInfo: '',
         keyWord: '',
         blogList: [],
     },
@@ -14,17 +14,19 @@ const store = new Vuex.Store({
             state.keyWord = keyWords;
         },
         blogListHandle(state, { list }) {
-            state.blogList = list
+            state.blogList = list;
+        },
+        setUesrName(state, name) {
+            state.userInfo = name;
         }
     },
     actions: {
         getblogList(context, { keyWords }) {
             context.commit('changKeyWord', { keyWords })
-            getBloglist('blog/list',{
+            getBloglist({
                 keyword: keyWords,
                 author: ''
             }).then((data) => {
-                console.log(data,1111)
                 context.commit('blogListHandle', { list: data.data })
             })
         }
