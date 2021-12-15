@@ -6,7 +6,10 @@
                 <span>作者:{{item.author}}</span>
                 <span>时间:{{item.createtime}}</span>
             </div>
-            <div class="article-content">
+            <div v-if="errorInfo">
+                {{errorInfo.message}}
+            </div>
+            <div class="article-content" v-else>
                 {{item.content}}
             </div>
         </div>
@@ -22,11 +25,19 @@ export default {
     data() {
         return {
             list: [],
+            errorInfo: null,
         }
     },
     computed: {
         blogList() {
-            return this.$store.state.blogList;
+            if (Array.isArray(this.$store.state.blogList)) {
+                return this.$store.state.blogList;
+            } else {
+                console.log( this.$store.state.blogList);
+                this.errorInfo = this.$store.state.blogList;
+                return [];
+            }
+           
         },
     },
     methods: {

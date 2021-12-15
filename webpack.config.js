@@ -102,7 +102,11 @@ if(isDev) {
     overlay: {
       errors: true
     },
-    hot: true
+    hot: true,
+    proxy: {
+        '/api':'http://localhost:8000',
+        // changeOrigin: true
+    }
   }
 } else {
   config.output.filename = '[name].[chunkhash:8].js';

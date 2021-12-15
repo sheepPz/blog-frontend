@@ -10,21 +10,29 @@
       </div>
       <div class="header-right">
           <div class="user-info">
-            {{"yanyyy"}}
-            <div class="user-info-quit">
+            {{userInfo}}
+            <div class="user-info-quit" @click="exit">
                 退出
-            </div>s
+            </div>
           </div>
       </div>
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { exit } from '@/service/blog'
+
 export default {
     data() {
         return {
             keyWords: '',
         }
+    },
+    computed: {
+        ...mapState([
+            'userInfo',
+        ]),
     },
     methods: {
         submitKeyWords() {
@@ -33,6 +41,11 @@ export default {
             //     keyWords: this.keyWords
             // })
             this.$store.dispatch('getblogList', { keyWords: this.keyWords })
+        },
+        exit() {
+            exit().then((data) => {
+                console.log(data);
+            })
         }
     }
 }
@@ -76,6 +89,7 @@ export default {
         display: flex;
         height: 100%;
         align-items: center;
+        max-width: 200px;
         .user-info {
             &:hover .user-info-quit{
                 display: block;
@@ -85,6 +99,10 @@ export default {
             display: none;
             position: absolute;
             padding: 10px 0;
+            border: 1px solid lightblue;
+            width: 100%;
+            box-sizing: border-box;
+            background: white;
             cursor: pointer;
         }
     }

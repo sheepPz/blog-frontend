@@ -1,11 +1,5 @@
 import axios from 'axios';
 
-if (process.env.NODE_ENV === 'production') {
-    axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
-} else {
-    axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
-}
-
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
@@ -18,7 +12,10 @@ axios.interceptors.request.use(function (config) {
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    console.log(response);
+    console.log(response.data);
+    if (response.data.errno) {
+        alert(response.data.message);
+    }
     return response.data;
   }, function (error) {
     // 对响应错误做点什么
@@ -26,6 +23,11 @@ axios.interceptors.response.use(function (response) {
 });
 
 function httpApi (config) {
+    let prefix = '';
+    if (process.env.NODE_ENV === 'production') {
+        prefix = 'http://127.0.0.1:80/';
+        config.url = prefix + config.url;
+    }
     return axios(config);
 }
 
