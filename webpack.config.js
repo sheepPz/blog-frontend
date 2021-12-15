@@ -2,6 +2,7 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpackbar = require('webpackbar')
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -45,6 +46,7 @@ const config = {
     ]
   },
   plugins: [
+    new webpackbar(),
     // 清除老的打包文件
     new CleanWebpackPlugin(),
     // 请确保引入这个插件！
@@ -98,6 +100,7 @@ if(isDev) {
       'less-loader'
     ]  
   });
+  // 配置一些没用的
   config.devServer = {
     overlay: {
       errors: true
