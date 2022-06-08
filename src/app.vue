@@ -1,55 +1,21 @@
-<template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      
-    }
-  }
-}
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import bgImg from './components/bg.vue'
+import navBar from './components/layout/heard.vue'
 </script>
 
-<style lang="less" scoped>
-  #app {
-      height: 100%;
-  }
-  #main {
-    position: relative;
-  }
-  #foot {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #cover {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;   
-    background-color: #999; 
-    opacity: 0.2;
-    z-index: -1;
-  }
-  .font {
-    color: red;
-    font-size: 30px;
-  }
-.page-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
+<template>
+  <div>
+    <nav-bar></nav-bar>
+    <bg-img/>
+    <div class="text-5xl fw100 mb7">123</div>
+  </div> 
+  <!-- <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  {{ $i18n.locale }} -->
+</template>
+
+<style lang="scss">
+
 </style>
