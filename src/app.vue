@@ -8,14 +8,13 @@ import navBar from './components/layout/heard.vue'
 <template>
   <div>
     <nav-bar></nav-bar>
-    <bg-img/>
-    <div class="text-5xl fw100 mb7">123</div>
-  </div> 
+    <bg-img />
+    <!-- <div class="text-5xl fw100 mb7">123</div> -->
+  </div>
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   {{ $i18n.locale }} -->
 </template>
 
 <style lang="scss">
-
 </style>
